@@ -1,0 +1,11 @@
+all:
+  hosts:
+web-srv:
+  hosts:
+%{ for i, list in lists.names ~}   
+    ${list}:
+      ansible_ssh_host: ${lists.ips[i]}
+      ansible_ssh_user: admin
+      domain_name: ${lists.names[i]}
+%{ endfor ~}
+

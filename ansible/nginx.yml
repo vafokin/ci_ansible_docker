@@ -1,0 +1,8 @@
+---
+- hosts: web-srv
+  become: yes
+  roles:
+    - role: push_django
+      vars:
+        site: '{{item}}'
+      loop: "{{sites_list}}"
